@@ -60,3 +60,4 @@ med-json-categories-data.js
 med-json-data.js
 info-json-data.js
 /data
+.env

@@ -4,16 +4,9 @@ import { extendTheme } from "@chakra-ui/react";
 import { Montserrat } from "next/font/google";
 import { LazyMotion, domAnimation, AnimatePresence } from "framer-motion";
 import { analytics } from "../firebase/config";
-//import posthog from "posthog-js";
-//import { PostHogProvider } from "posthog-js/react";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 
-// if (typeof window !== undefined) {
-//   posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY, {
-//     api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST,
-//   });
-// }
 
 const colors = {
   brand: {
@@ -40,21 +33,21 @@ function MyApp({ Component, pageProps }) {
 
   //Necesario para captar la navegación por cada ruta de la página para PostHog
   //Necesario para captar la navegación por cada ruta de la página para PostHog
-  useEffect(() => {
-    const handleRouteChange = () =>
-      logEvent(analytics, "page_view", {
-        page_location: `${router.basePath}${router.asPath}`,
-        page_path: router.asPath,
-        page_title: router.asPath,
-      });
-    router.events.on("routeChangeComplete", handleRouteChange);
+  // useEffect(() => {
+  //   const handleRouteChange = () =>
+  //     logEvent(analytics, "page_view", {
+  //       page_location: `${router.basePath}${router.asPath}`,
+  //       page_path: router.asPath,
+  //       page_title: router.asPath,
+  //     });
+  //   router.events.on("routeChangeComplete", handleRouteChange);
 
-    return () => {
-      router.events.off("routeChangeComplete", handleRouteChange);
-    };
+  //   return () => {
+  //     router.events.off("routeChangeComplete", handleRouteChange);
+  //   };
 
-    //eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [router.events]);
+  //   //eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [router.events]);
 
   return (
     // <PostHogProvider client={posthog}>

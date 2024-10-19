@@ -72,7 +72,8 @@ export async function handleNewsData() {
       //Si se respaldan los datos y estos se suben desde un archivo JSON
       //todas los datos tipo timestamps se subiran como un objeto y no como una fecha, por lo que manualmente deberán ser removidas
       //o modificadas de la base de datos
-      const date = item.uploadedAt ? item.uploadedAt.toDate() : null;
+
+      const date = item?.uploadedAt ? item.uploadedAt.toDate() : null;
       return {
         ...item,
         image: imgURL,
@@ -91,7 +92,7 @@ export async function handleTestimonialsData() {
   const testimonialsWithImages = await Promise.all(
     testimonials.map(async (item) => {
       const imgURL = await setImagesURLs(item.portrait);
-      const date = item.uploadedAt ? item.uploadedAt.toDate() : null;
+      const date = item?.uploadedAt ? item.uploadedAt.toDate() : null;
       return {
         ...item,
         uploadedAt: date,
